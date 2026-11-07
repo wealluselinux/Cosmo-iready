@@ -60,9 +60,9 @@
         }
 
         .login-card {
-            background: #f7f9fa;
-            border-radius: 8px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+            background: #ffffff;
+            border-radius: 4px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.15);
             overflow: hidden;
             position: relative;
             z-index: 1;
@@ -75,13 +75,14 @@
         }
         .card-header-logo img {
             height: 38px;
+            object-fit: contain;
         }
 
         .card-sub-header {
-            background-color: #e2e5e8;
-            color: #555555;
+            background-color: #dcdfe3;
+            color: #333333;
             text-align: center;
-            padding: 8px 16px;
+            padding: 10px 16px;
             font-size: 14px;
             font-weight: bold;
         }
@@ -93,36 +94,37 @@
         .input-row {
             display: flex;
             align-items: center;
-            margin-bottom: 14px;
+            margin-bottom: 16px;
         }
 
         .input-row label {
             width: 90px;
             font-size: 13px;
-            color: #555555;
+            color: #444444;
             font-weight: bold;
             text-align: right;
-            padding-right: 12px;
+            padding-right: 14px;
         }
 
         .input-row input, .input-row select {
             flex: 1;
-            padding: 8px 12px;
+            padding: 9px 12px;
             font-size: 14px;
-            border: 1px solid #cccccc;
+            border: 1px solid #b5b5b5;
             border-radius: 4px;
             outline: none;
             background-color: #ffffff;
         }
 
         .input-row input:focus, .input-row select:focus {
-            border-color: #0084c6;
+            border-color: #0072ce;
+            box-shadow: 0 0 4px rgba(0,114,206,0.3);
         }
 
         .forgot-link-row {
             margin-left: 90px;
-            margin-top: -6px;
-            margin-bottom: 14px;
+            margin-top: -4px;
+            margin-bottom: 16px;
         }
 
         .forgot-link-row a {
@@ -142,25 +144,29 @@
             margin-top: 24px;
         }
 
-        .btn-submit {
-            background-color: #e9ecef;
-            color: #b0b0b0;
+        /* Image-based Submit Button */
+        .btn-submit-img {
+            background: none;
             border: none;
-            padding: 10px 40px;
-            font-size: 20px;
-            font-weight: bold;
-            border-radius: 24px;
+            padding: 0;
             cursor: pointer;
-            transition: all 0.2s;
+            opacity: 0.5;
+            pointer-events: none;
+            transition: opacity 0.2s, transform 0.1s;
         }
 
-        .btn-submit.active {
-            background-color: #008a00;
-            color: #ffffff;
+        .btn-submit-img.active {
+            opacity: 1;
+            pointer-events: auto;
         }
 
-        .btn-submit.active:hover {
-            background-color: #006800;
+        .btn-submit-img.active:hover {
+            transform: scale(1.02);
+        }
+
+        .btn-submit-img img {
+            height: 48px;
+            object-fit: contain;
         }
 
         .error-msg {
@@ -171,17 +177,18 @@
             display: none;
         }
 
-        /* Mascot / K-1 Badge overlay */
+        /* Mascot Overlay */
         .mascot-badge {
             position: absolute;
-            right: -65px;
-            top: 25px;
+            right: -85px;
+            top: 15px;
             z-index: 2;
             pointer-events: none;
         }
 
         .mascot-badge img {
-            width: 155px;
+            width: 170px;
+            height: auto;
         }
 
         /* Footer */
@@ -223,37 +230,15 @@
     <div class="main-container">
         <div class="login-card-wrapper">
             
-            <!-- Mascot side overlay -->
+            <!-- Character Mascot Image -->
             <div class="mascot-badge">
-                <svg width="150" height="150" viewBox="0 0 150 150" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <g id="mascot">
-                        <path d="M 40 40 C 20 10, 80 5, 90 35 C 120 20, 130 70, 100 80 C 120 120, 70 130, 50 100 C 20 110, 10 60, 40 40 Z" fill="#ff7900"/>
-                        <ellipse cx="60" cy="50" rx="12" ry="16" fill="white"/>
-                        <circle cx="62" cy="50" r="5" fill="black"/>
-                        <ellipse cx="90" cy="55" rx="10" ry="14" fill="white"/>
-                        <circle cx="89" cy="55" r="4" fill="black"/>
-                        <path d="M 50 75 Q 75 100 100 70" stroke="black" stroke-width="4" fill="white"/>
-                        <rect x="35" y="85" width="80" height="35" rx="17" fill="#0066ff"/>
-                        <text x="75" y="99" font-size="10" font-weight="bold" fill="white" text-anchor="middle">K-1 Card</text>
-                        <text x="75" y="111" font-size="10" font-weight="bold" fill="white" text-anchor="middle">Login</text>
-                    </g>
-                </svg>
+                <img src="/imgs/character.png" alt="Character Mascot" />
             </div>
 
             <div class="login-card">
                 <div class="card-header-logo">
-                    <!-- Inline SVG i-Ready Connect Logo -->
-                    <svg height="34" viewBox="0 0 310 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <g id="logo">
-                            <!-- Cube Icon -->
-                            <path d="M18 4 L30 11 L18 18 L6 11 Z" fill="#60bb46"/>
-                            <path d="M6 13 L17 19.5 L17 33 L6 26 Z" fill="#f58220"/>
-                            <path d="M19 19.5 L30 13 L30 26 L19 33 Z" fill="#00a3e0"/>
-                            <!-- Text: i-Ready Connect -->
-                            <text x="38" y="28" font-size="28" font-weight="bold" fill="#222222" font-family="sans-serif">i-Ready</text>
-                            <text x="165" y="28" font-size="26" font-weight="300" fill="#444444" font-family="sans-serif">Connect</text>
-                        </g>
-                    </svg>
+                    <!-- Logo Image -->
+                    <img src="/imgs/logo.png" alt="i-Ready Connect" />
                 </div>
 
                 <div class="card-sub-header">
@@ -263,12 +248,12 @@
                 <form id="loginForm" class="form-body">
                     <div class="input-row">
                         <label for="username">Username</label>
-                        <input type="text" id="username" placeholder="Enter username" autocomplete="off" required />
+                        <input type="text" id="username" autocomplete="off" required />
                     </div>
 
                     <div class="input-row">
                         <label for="password">Password</label>
-                        <input type="password" id="password" placeholder="Enter password" required />
+                        <input type="password" id="password" required />
                     </div>
 
                     <div class="forgot-link-row">
@@ -288,7 +273,9 @@
                     </div>
 
                     <div class="btn-row">
-                        <button type="submit" id="submitBtn" class="btn-submit">Go!</button>
+                        <button type="submit" id="submitBtn" class="btn-submit-img">
+                            <img src="/imgs/go.png" alt="Go!" />
+                        </button>
                     </div>
 
                     <div id="error" class="error-msg">Invalid credentials. Please try again.</div>
@@ -310,7 +297,6 @@
         const passwordInput = document.getElementById('password');
         const submitBtn = document.getElementById('submitBtn');
 
-        // Toggle green active button state when both fields are filled out
         function checkInputs() {
             if (usernameInput.value.trim() !== '' && passwordInput.value.trim() !== '') {
                 submitBtn.classList.add('active');
