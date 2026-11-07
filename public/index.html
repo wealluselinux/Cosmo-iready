@@ -23,11 +23,11 @@
         /* Top Bar */
         .top-bar {
             background-color: #ffffff;
-            height: 40px;
+            height: 42px;
             display: flex;
             justify-content: flex-end;
             align-items: center;
-            padding: 0 24px;
+            padding: 0 28px;
             font-size: 14px;
         }
         .top-bar a {
@@ -38,7 +38,7 @@
             text-decoration: underline;
         }
         .top-bar .divider {
-            margin: 0 8px;
+            margin: 0 10px;
             color: #999;
         }
 
@@ -56,26 +56,28 @@
         .login-card-wrapper {
             position: relative;
             width: 100%;
-            max-width: 480px;
+            max-width: 530px;
         }
 
         .login-card {
             background: #ffffff;
-            border-radius: 4px;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+            border-radius: 6px;
+            box-shadow: 0 6px 24px rgba(0,0,0,0.18);
             position: relative;
             z-index: 1;
+            overflow: visible;
         }
 
         .card-header-logo {
             background: #ffffff;
-            padding: 24px 0 16px 0;
+            padding: 30px 0 20px 0;
             text-align: center;
-            border-top-left-radius: 4px;
-            border-top-right-radius: 4px;
+            border-top-left-radius: 6px;
+            border-top-right-radius: 6px;
         }
         .card-header-logo img {
-            height: 38px;
+            height: 46px;
+            width: auto;
             object-fit: contain;
         }
 
@@ -83,34 +85,34 @@
             background-color: #dcdfe3;
             color: #333333;
             text-align: center;
-            padding: 10px 16px;
-            font-size: 14px;
+            padding: 12px 16px;
+            font-size: 15px;
             font-weight: bold;
         }
 
         .form-body {
-            padding: 30px 40px 35px 40px;
+            padding: 35px 45px 40px 45px;
         }
 
         .input-row {
             display: flex;
             align-items: center;
-            margin-bottom: 16px;
+            margin-bottom: 18px;
         }
 
         .input-row label {
-            width: 90px;
-            font-size: 13px;
+            width: 100px;
+            font-size: 14px;
             color: #444444;
             font-weight: bold;
             text-align: right;
-            padding-right: 14px;
+            padding-right: 16px;
         }
 
         .input-row input, .input-row select {
             flex: 1;
-            padding: 9px 12px;
-            font-size: 14px;
+            padding: 11px 14px;
+            font-size: 15px;
             border: 1px solid #b5b5b5;
             border-radius: 4px;
             outline: none;
@@ -119,18 +121,18 @@
 
         .input-row input:focus, .input-row select:focus {
             border-color: #0072ce;
-            box-shadow: 0 0 4px rgba(0,114,206,0.3);
+            box-shadow: 0 0 5px rgba(0,114,206,0.3);
         }
 
         .forgot-link-row {
-            margin-left: 90px;
-            margin-top: -4px;
-            margin-bottom: 16px;
+            margin-left: 100px;
+            margin-top: -6px;
+            margin-bottom: 18px;
         }
 
         .forgot-link-row a {
             color: #0072ce;
-            font-size: 12px;
+            font-size: 13px;
             font-weight: bold;
             text-decoration: none;
         }
@@ -142,16 +144,16 @@
         .btn-row {
             display: flex;
             justify-content: center;
-            margin-top: 24px;
+            margin-top: 30px;
         }
 
-        /* Image-based Submit Button */
+        /* Submit Button Styling */
         .btn-submit-img {
             background: none;
             border: none;
             padding: 0;
             cursor: pointer;
-            opacity: 0.5;
+            opacity: 0.4;
             pointer-events: none;
             transition: opacity 0.2s, transform 0.1s;
         }
@@ -162,43 +164,45 @@
         }
 
         .btn-submit-img.active:hover {
-            transform: scale(1.02);
+            transform: scale(1.03);
         }
 
         .btn-submit-img img {
-            height: 44px;
+            height: 52px;
             width: auto;
             object-fit: contain;
+            display: block;
         }
 
         .error-msg {
             color: #d9534f;
-            font-size: 13px;
+            font-size: 14px;
             text-align: center;
-            margin-top: 14px;
+            margin-top: 16px;
             display: none;
         }
 
-        /* Fixed Mascot Positioning */
+        /* Mascot Positioning */
         .mascot-badge {
             position: absolute;
-            right: -130px;
-            top: 25px;
+            right: -145px;
+            top: 20px;
             z-index: 2;
             pointer-events: none;
         }
 
         .mascot-badge img {
-            width: 175px;
+            width: 190px;
             height: auto;
+            display: block;
         }
 
         /* Footer */
         .footer {
             background-color: #ffffff;
-            padding: 16px 20px;
+            padding: 18px 24px;
             text-align: center;
-            font-size: 11px;
+            font-size: 12px;
             color: #666666;
             line-height: 1.6;
         }
@@ -206,7 +210,7 @@
         .footer-title {
             font-weight: bold;
             color: #0072ce;
-            font-size: 13px;
+            font-size: 14px;
             margin-bottom: 4px;
         }
 
