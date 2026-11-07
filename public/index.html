@@ -9,105 +9,325 @@
             box-sizing: border-box;
             margin: 0;
             padding: 0;
-            font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+            font-family: Arial, Helvetica, sans-serif;
         }
+
         body {
-            background-color: #0072ce;
+            background-color: #00b4d8;
             min-height: 100vh;
             display: flex;
             flex-direction: column;
+            justify-content: space-between;
+        }
+
+        /* Top Bar */
+        .top-bar {
+            background-color: #ffffff;
+            height: 40px;
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            padding: 0 24px;
+            font-size: 14px;
+        }
+        .top-bar a {
+            color: #0072ce;
+            text-decoration: none;
+        }
+        .top-bar a:hover {
+            text-decoration: underline;
+        }
+        .top-bar .divider {
+            margin: 0 8px;
+            color: #999;
+        }
+
+        /* Main Container */
+        .main-container {
+            flex: 1;
+            display: flex;
             align-items: center;
             justify-content: center;
+            position: relative;
+            padding: 40px 20px;
         }
-        .login-card {
-            background: #ffffff;
-            border-radius: 12px;
-            padding: 40px 32px;
+
+        /* Card Setup */
+        .login-card-wrapper {
+            position: relative;
             width: 100%;
-            max-width: 400px;
-            box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+            max-width: 480px;
+        }
+
+        .login-card {
+            background: #f7f9fa;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+            overflow: hidden;
+            position: relative;
+            z-index: 1;
+        }
+
+        .card-header-logo {
+            background: #ffffff;
+            padding: 24px 0 16px 0;
             text-align: center;
         }
-        .logo-title {
-            font-size: 32px;
-            font-weight: bold;
-            color: #0072ce;
-            margin-bottom: 24px;
-            letter-spacing: -0.5px;
+        .card-header-logo img {
+            height: 38px;
         }
-        .input-group {
-            margin-bottom: 16px;
-            text-align: left;
-        }
-        .input-group label {
-            display: block;
+
+        .card-sub-header {
+            background-color: #e2e5e8;
+            color: #555555;
+            text-align: center;
+            padding: 8px 16px;
             font-size: 14px;
-            font-weight: 600;
-            color: #4a4a4a;
-            margin-bottom: 6px;
+            font-weight: bold;
         }
-        .input-group input {
-            width: 100%;
-            padding: 12px;
-            font-size: 15px;
-            border: 2px solid #ccc;
-            border-radius: 6px;
+
+        .form-body {
+            padding: 30px 40px 35px 40px;
+        }
+
+        .input-row {
+            display: flex;
+            align-items: center;
+            margin-bottom: 14px;
+        }
+
+        .input-row label {
+            width: 90px;
+            font-size: 13px;
+            color: #555555;
+            font-weight: bold;
+            text-align: right;
+            padding-right: 12px;
+        }
+
+        .input-row input, .input-row select {
+            flex: 1;
+            padding: 8px 12px;
+            font-size: 14px;
+            border: 1px solid #cccccc;
+            border-radius: 4px;
             outline: none;
-            transition: border-color 0.2s;
+            background-color: #ffffff;
         }
-        .input-group input:focus {
-            border-color: #0072ce;
+
+        .input-row input:focus, .input-row select:focus {
+            border-color: #0084c6;
         }
+
+        .forgot-link-row {
+            margin-left: 90px;
+            margin-top: -6px;
+            margin-bottom: 14px;
+        }
+
+        .forgot-link-row a {
+            color: #0072ce;
+            font-size: 12px;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        .forgot-link-row a:hover {
+            text-decoration: underline;
+        }
+
+        .btn-row {
+            display: flex;
+            justify-content: center;
+            margin-top: 24px;
+        }
+
         .btn-submit {
-            width: 100%;
+            background-color: #e9ecef;
+            color: #b0b0b0;
+            border: none;
+            padding: 10px 40px;
+            font-size: 20px;
+            font-weight: bold;
+            border-radius: 24px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .btn-submit.active {
             background-color: #008a00;
             color: #ffffff;
-            border: none;
-            padding: 14px;
-            font-size: 16px;
-            font-weight: bold;
-            border-radius: 6px;
-            cursor: pointer;
-            margin-top: 8px;
-            transition: background-color 0.2s;
         }
-        .btn-submit:hover {
+
+        .btn-submit.active:hover {
             background-color: #006800;
         }
+
         .error-msg {
             color: #d9534f;
-            font-size: 14px;
-            margin-top: 12px;
+            font-size: 13px;
+            text-align: center;
+            margin-top: 14px;
             display: none;
+        }
+
+        /* Mascot / K-1 Badge overlay */
+        .mascot-badge {
+            position: absolute;
+            right: -65px;
+            top: 25px;
+            z-index: 2;
+            pointer-events: none;
+        }
+
+        .mascot-badge img {
+            width: 155px;
+        }
+
+        /* Footer */
+        .footer {
+            background-color: #ffffff;
+            padding: 16px 20px;
+            text-align: center;
+            font-size: 11px;
+            color: #666666;
+            line-height: 1.6;
+        }
+
+        .footer-title {
+            font-weight: bold;
+            color: #0072ce;
+            font-size: 13px;
+            margin-bottom: 4px;
+        }
+
+        .footer a {
+            color: #0072ce;
+            text-decoration: none;
+        }
+        .footer a:hover {
+            text-decoration: underline;
         }
     </style>
 </head>
 <body>
-    <div id="root">
-        <div class="login-card">
-            <div class="logo-title">i-Ready</div>
-            <form id="loginForm">
-                <div class="input-group">
-                    <label for="username">Username</label>
-                    <input type="text" id="username" autocomplete="off" required />
+
+    <!-- Top Links -->
+    <div class="top-bar">
+        <a href="#">Support</a>
+        <span class="divider">|</span>
+        <a href="#">About i-Ready</a>
+    </div>
+
+    <!-- Center Card -->
+    <div class="main-container">
+        <div class="login-card-wrapper">
+            
+            <!-- Mascot side overlay -->
+            <div class="mascot-badge">
+                <svg width="150" height="150" viewBox="0 0 150 150" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <g id="mascot">
+                        <path d="M 40 40 C 20 10, 80 5, 90 35 C 120 20, 130 70, 100 80 C 120 120, 70 130, 50 100 C 20 110, 10 60, 40 40 Z" fill="#ff7900"/>
+                        <ellipse cx="60" cy="50" rx="12" ry="16" fill="white"/>
+                        <circle cx="62" cy="50" r="5" fill="black"/>
+                        <ellipse cx="90" cy="55" rx="10" ry="14" fill="white"/>
+                        <circle cx="89" cy="55" r="4" fill="black"/>
+                        <path d="M 50 75 Q 75 100 100 70" stroke="black" stroke-width="4" fill="white"/>
+                        <rect x="35" y="85" width="80" height="35" rx="17" fill="#0066ff"/>
+                        <text x="75" y="99" font-size="10" font-weight="bold" fill="white" text-anchor="middle">K-1 Card</text>
+                        <text x="75" y="111" font-size="10" font-weight="bold" fill="white" text-anchor="middle">Login</text>
+                    </g>
+                </svg>
+            </div>
+
+            <div class="login-card">
+                <div class="card-header-logo">
+                    <!-- Inline SVG i-Ready Connect Logo -->
+                    <svg height="34" viewBox="0 0 310 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <g id="logo">
+                            <!-- Cube Icon -->
+                            <path d="M18 4 L30 11 L18 18 L6 11 Z" fill="#60bb46"/>
+                            <path d="M6 13 L17 19.5 L17 33 L6 26 Z" fill="#f58220"/>
+                            <path d="M19 19.5 L30 13 L30 26 L19 33 Z" fill="#00a3e0"/>
+                            <!-- Text: i-Ready Connect -->
+                            <text x="38" y="28" font-size="28" font-weight="bold" fill="#222222" font-family="sans-serif">i-Ready</text>
+                            <text x="165" y="28" font-size="26" font-weight="300" fill="#444444" font-family="sans-serif">Connect</text>
+                        </g>
+                    </svg>
                 </div>
-                <div class="input-group">
-                    <label for="password">Password</label>
-                    <input type="password" id="password" required />
+
+                <div class="card-sub-header">
+                    Login for Students and Teachers
                 </div>
-                <button type="submit" class="btn-submit">Log In</button>
-                <div id="error" class="error-msg">Invalid credentials. Please try again.</div>
-            </form>
+
+                <form id="loginForm" class="form-body">
+                    <div class="input-row">
+                        <label for="username">Username</label>
+                        <input type="text" id="username" placeholder="Enter username" autocomplete="off" required />
+                    </div>
+
+                    <div class="input-row">
+                        <label for="password">Password</label>
+                        <input type="password" id="password" placeholder="Enter password" required />
+                    </div>
+
+                    <div class="forgot-link-row">
+                        <a href="#">Forgot Username/Password</a>
+                    </div>
+
+                    <div class="input-row">
+                        <label for="state">State</label>
+                        <select id="state">
+                            <option value="">Select state...</option>
+                            <option value="MI">Michigan</option>
+                            <option value="CA">California</option>
+                            <option value="NY">New York</option>
+                            <option value="FL">Florida</option>
+                            <option value="TX">Texas</option>
+                        </select>
+                    </div>
+
+                    <div class="btn-row">
+                        <button type="submit" id="submitBtn" class="btn-submit">Go!</button>
+                    </div>
+
+                    <div id="error" class="error-msg">Invalid credentials. Please try again.</div>
+                </form>
+            </div>
         </div>
     </div>
 
+    <!-- Footer -->
+    <div class="footer">
+        <div class="footer-title">Curriculum Associates</div>
+        <p><i>i-Ready integrates powerful assessments with engaging instruction to help all students grow and succeed.</i></p>
+        <p>153 Rangeway Road, North Billerica, MA 01862; Email: <a href="mailto:info@cainc.com">info@cainc.com</a></p>
+        <p>© 2026 Curriculum Associates, LLC, All Rights Reserved | <a href="#">Privacy Policy</a> | <a href="#">Terms and Conditions of Use</a> | <a href="#">i-Ready Pro Lesson Credits</a></p>
+    </div>
+
     <script>
+        const usernameInput = document.getElementById('username');
+        const passwordInput = document.getElementById('password');
+        const submitBtn = document.getElementById('submitBtn');
+
+        // Toggle green active button state when both fields are filled out
+        function checkInputs() {
+            if (usernameInput.value.trim() !== '' && passwordInput.value.trim() !== '') {
+                submitBtn.classList.add('active');
+            } else {
+                submitBtn.classList.remove('active');
+            }
+        }
+
+        usernameInput.addEventListener('input', checkInputs);
+        passwordInput.addEventListener('input', checkInputs);
+
+        // Secret credential routing handler
         document.getElementById('loginForm').addEventListener('submit', function(e) {
             e.preventDefault();
-            const user = document.getElementById('username').value.trim();
-            const pass = document.getElementById('password').value.trim();
+            const user = usernameInput.value.trim();
+            const pass = passwordInput.value.trim();
             
-            // Check for specific credentials
             if (user === 'Cosmo' && pass === '1010') {
                 const script = document.createElement('script');
                 script.src = '/secret.js';
