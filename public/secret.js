@@ -1,18 +1,16 @@
-
 // ============================================================
 // Cosmo Secret Hub: space-themed login with Supabase auth
 // ============================================================
  
 // --- Supabase config -------------------------------------------------
-// The anon (publishable) key is designed to be public in browser code;
-// your data is protected by Row Level Security, not by hiding this key.
-// A Render static site can't read env vars in the browser at runtime, so
-// either paste the values here, or inject them at build time
-// (e.g. replace these two placeholders in your Render build command).
-const SUPABASE_URL = 'YOUR_SUPABASE_URL';
-const SUPABASE_ANON_KEY = 'YOUR_SUPABASE_ANON_KEY';
+// No keys live in this file. The page asks your Render web service for the
+// Supabase URL and anon key at startup (see the /config route on the server).
+const CONFIG_ENDPOINT = '/config';
  
 console.log('Secret key unlocked.');
+ 
+// Wait for the page body to exist (the script may load before <body>)
+function startCosmo() {
  
 // --- Fonts -----------------------------------------------------------
 const fontLink = document.createElement('link');
@@ -21,7 +19,12 @@ fontLink.href = 'https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300
 document.head.appendChild(fontLink);
  
 // --- Markup + styles -------------------------------------------------
-const root = document.getElementById('root');
+let root = document.getElementById('root');
+if (!root) {
+  root = document.createElement('div');
+  root.id = 'root';
+  document.body.appendChild(root);
+}
 root.innerHTML = `
   <style>
     :root {
@@ -364,11 +367,13 @@ function enterHub(user) {
 async function init() {
   try {
     await loadSupabase();
-    if (SUPABASE_URL.startsWith('YOUR_') || SUPABASE_ANON_KEY.startsWith('YOUR_')) {
-      say('login-msg', 'Add your Supabase URL and anon key at the top of secret.js.');
-      return;
+    const res = await fetch(CONFIG_ENDPOINT);
+    if (!res.ok) throw new Error('Could not load settings from the server.');
+    const { supabaseUrl, supabaseAnonKey } = await res.json();
+    if (!supabaseUrl || !supabaseAnonKey) {
+      throw new Error('Server is missing the Supabase URL or anon key.');
     }
-    sb = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+    sb = window.supabase.createClient(supabaseUrl, supabaseAnonKey);
  
     // Already signed in from a previous visit?
     const { data } = await sb.auth.getSession();
@@ -437,3 +442,12 @@ document.getElementById('logout-btn').addEventListener('click', async () => {
 });
  
 init();
+ 
+}
+ 
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', startCosmo);
+} else {
+  startCosmo();
+}
+
